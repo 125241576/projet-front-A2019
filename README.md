@@ -1,5 +1,5 @@
 # Counters
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/09618f5a-dd65-4daa-9037-9af3163b26ab/deploy-status)](https://app.netlify.com/sites/xuhh-lpa2/deploys)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.12.
 
 ## Development server
