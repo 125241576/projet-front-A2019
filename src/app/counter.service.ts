@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class CounterService {
 
-  public initialValeur=[12,6,78];
+  public initialValeur=[0,0,0];
 
   constructor() { }
 
