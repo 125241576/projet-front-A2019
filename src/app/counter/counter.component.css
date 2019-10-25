@@ -1,6 +1,8 @@
-h1{
+h1 {
     color: blue;
 }
-p{
+
+p {
     color: seagreen;
+    font-size: 20px;
 }
