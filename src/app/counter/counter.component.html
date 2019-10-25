@@ -1,14 +1,16 @@
-<mat-card class="example-card">
-
+<mat-card class="example-card" *ngIf="value">
+    <mat-card-header>
+        <mat-card-title>#{{position}} {{value.name}}</mat-card-title>
+    </mat-card-header>
     <mat-card-content>
-        <h1>Counter {{position}}</h1>
+
         <p>
-            VALEUR={{counterService.initialValeur[position]}}
+            VALEUR={{value.value}}
         </p>
     </mat-card-content>
 
     <mat-card-actions>
-        <button mat-button (click)="increment()">increment</button>
+        <button mat-button (click)="increment() ">increment</button>
 
     </mat-card-actions>
 </mat-card>

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CounterService } from '../counter.service';
+import { Observable } from 'rxjs';
+import { Counter } from '../counter';
 
 @Component({
   selector: 'app-counter',
@@ -11,13 +13,17 @@ export class CounterComponent implements OnInit {
 
   @Input() position;
   
+  value: Counter;
+
   constructor(public counterService: CounterService) { }
 
   ngOnInit() {
+    console.log("call counter")
+    this.counterService.getCounterValue(this.position).subscribe(counter => this.value = counter)
   }
 
   increment(){
-    this.counterService.increment(this.position);
-
+    this.counterService.increment(this.value);
+    this.counterService.getCounterValue(this.position).subscribe(counter => this.value = counter)
   }
 }
