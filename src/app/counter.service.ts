@@ -1,42 +1,31 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable} from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Counter } from './counter';
 import { Observable } from 'rxjs';
-import { HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class CounterService {
+  public initialValue = [12, 5, 7];
+  private counterUrl = 'https://lp4asgadot.herokuapp.com/counters/';
+  private countersUrl = 'https://lp4asgadot.herokuapp.com/counters.json';
 
-  public initialValeur=[0,0,0];
+  constructor(private http: HttpClient) { }
 
- 
-
-  constructor(private httpClient:HttpClient) { }
-
-  reset(){
-    this.initialValeur=[0,0,0];
+  reset() {
+    this.initialValue = [0, 0, 0];
   }
 
-  increment(): Observable<Counter>{
-    this.httpClient.patch("https://lp4asgadot.herokuapp.com/counters/62.json",{"value" : 1}).subscribe();
-
-    return this.httpClient.get<Counter>("https://lp4asgadot.herokuapp.com/counters/62.json");
-      
-    }
-     
-     
-
-
- 
-
-  
-  getCounterValue(id:number): Observable<Counter> {
-    return this.httpClient.get<Counter>("https://lp4asgadot.herokuapp.com/counters/62.json");
+  increment(id: number): Observable<Counter> {
+    return this.http.patch<Counter>(this.counterUrl + id + '.json', {});
   }
 
- 
+  getCounterValue(id: number): Observable<Counter> {
+    return this.http.get<Counter>(this.counterUrl + id + '.json');
+  }
+
+  getCounters(): Observable<Counter[]> {
+    return this.http.get<Counter[]>(this.countersUrl);
+  }
 }
